@@ -12,6 +12,7 @@ type RedisAdapterOptions struct {
 	Prefix   string
 	Network  string
 	Password string
+	UseTLS   bool
 	// DB : specifies the database to select when dialing a connection.
 	DB int
 }

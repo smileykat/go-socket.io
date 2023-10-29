@@ -38,6 +38,9 @@ func (s *Server) Adapter(opts *RedisAdapterOptions) (bool, error) {
 	if opts.DB > 0 {
 		redisOpts = append(redisOpts, redis.DialDatabase(opts.DB))
 	}
+	if opts.UseTLS {
+		redisOpts = append(redisOpts, redis.DialUseTLS(true))
+	}
 
 	conn, err := redis.Dial(opts.Network, opts.getAddr(), redisOpts...)
 	if err != nil {
