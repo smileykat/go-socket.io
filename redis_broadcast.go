@@ -87,6 +87,9 @@ func newRedisBroadcast(nsp string, opts *RedisAdapterOptions) (*redisBroadcast, 
 	if opts.DB > 0 {
 		redisOpts = append(redisOpts, redis.DialDatabase(opts.DB))
 	}
+	if opts.UseTLS {
+		redisOpts = append(redisOpts, redis.DialUseTLS(true))
+	}
 
 	pub, err := redis.Dial(opts.Network, addr, redisOpts...)
 	if err != nil {
