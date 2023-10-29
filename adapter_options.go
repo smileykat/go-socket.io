@@ -59,6 +59,8 @@ func getOptions(opts *RedisAdapterOptions) *RedisAdapterOptions {
 		if len(opts.Password) > 0 {
 			options.Password = opts.Password
 		}
+
+		options.UseTLS = opts.UseTLS
 	}
 
 	return options
